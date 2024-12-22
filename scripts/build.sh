@@ -13,8 +13,14 @@ if test -f "$OUTPUT_ARCHIVE_DIR"; then
 	rm $OUTPUT_ARCHIVE_DIR
 fi
 
+if [ ! -d "../archives" ]; then
+	mkdir ../archives
+fi
+
 # download kernel
-wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$KERNEL_VER.tar.xz -O $OUTPUT_ARCHIVE_DIR
+if [ -d "../archives" ]; then
+	wget https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$KERNEL_VER.tar.xz -O $OUTPUT_ARCHIVE_DIR
+fi
 
 # move to destination
 cd ..
